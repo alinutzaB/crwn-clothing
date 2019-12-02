@@ -12,7 +12,7 @@ const config = {
     appId: "1:663928103345:web:a3bd3c5d0a67f022d79d90",
     measurementId: "G-4P2SP3TJ59"
   };
-
+firebase.initializeApp(config);
 	
 export const createUserProfileDocument = async(userAuth, additionalData) => {
 	if(!userAuth)return;
@@ -30,16 +30,14 @@ export const createUserProfileDocument = async(userAuth, additionalData) => {
 				email,
 				createdAt,
 				...additionalData
-			})
+			});
 
 		} catch(error) {
 			console.log('error from creating an user', error.message);
 		}
 	}
 	return userRef;
-} 
-
-firebase.initializeApp(config);
+} ;
 
 export const auth = firebase.auth();
 export const firestore = firebase.firestore();
